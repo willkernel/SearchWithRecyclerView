@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <!--Toolbar  layout_height  48dp >>出现图标和Title不对齐 设置minHeight=48dp-->
+
+    <!--http://blog.csdn.net/lovexieyuan520/article/details/48931185-->
+    <!--app:popupTheme，这个属性就是用来自定义我们弹出的菜单的样式，在之前的Actionbar的溢出菜单，我们是不能自定义他的样式的，
+    只能根据你的theme来选择黑白两种，不能自己定义，现在我们可以定义弹出菜单的样式。
+    比如我们的需求：ActionBar文字是白的，ActionBar Overflow弹出的是白底黑字 默认的情况下我们使用theme为android:Theme.Holo.Light.DarkActionBar那么ActionBar文字是白的，
+    ActionBar Overflow弹出的是黑底白字，但是我们要的是上面的需求白底黑字怎么办呢，这在android5.0以前是没法做到的，现在可以用app:popupTheme这个属性就可以实现，
+    比如我可以将toolbar的app:popupTheme="ThemeOverlay.AppCompat.Light"，那么这个Overflow弹出的是白底黑字。最后一个问题使用android:theme这个属性，
+    在android3.0以上可以应用到View及其子View的，但是在android3.0以下只能应用到当前的View，是不能使子View起作用的，所有要用到该theme的View都要加上，这个切记，
+    当然了android3.0以下的遗留机器已经很少了，如果你不用适配这个版本，你完全可以忽略这个。-->
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/card_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:overScrollMode="never" />
+</android.support.design.widget.CoordinatorLayout>
